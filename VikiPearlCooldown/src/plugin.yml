@@ -1,0 +1,5 @@
+name: VikiPearlCooldown
+main: com.gmail.falistos.VikiPearlCooldown.VikiPearlCooldown
+version: 0.1
+commands:
+depend: [Vault]

@@ -34,7 +34,7 @@ public class VikiPearlCooldown extends JavaPlugin implements Listener {
         if (permissionProvider != null) {
             perm = permissionProvider.getProvider();
         }
-        return (perm != null);
+        return perm != null;
     }
 
 	public void onDisable() {
@@ -44,11 +44,9 @@ public class VikiPearlCooldown extends JavaPlugin implements Listener {
 	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent e) {
-		
 		Action eAction = e.getAction();
 		
 		if (eAction == Action.RIGHT_CLICK_AIR || eAction == Action.RIGHT_CLICK_BLOCK) {
-
 			Player player = e.getPlayer();
 			ItemStack inHand = e.getItem();
 			
@@ -64,7 +62,6 @@ public class VikiPearlCooldown extends JavaPlugin implements Listener {
 					{
 						e.setCancelled(true);
 						player.sendMessage(ChatColor.GOLD +this.getRoundDouble(cd.getCurrentCooldown(player))+ " secondes pour utiliser une enderpearl");
-					
 						player.updateInventory();
 					}
 					else
@@ -75,7 +72,7 @@ public class VikiPearlCooldown extends JavaPlugin implements Listener {
 			}
 		}
 	}
-	  
+
     protected String getRoundDouble(double value)
     {
     	DecimalFormat df = new DecimalFormat("#");

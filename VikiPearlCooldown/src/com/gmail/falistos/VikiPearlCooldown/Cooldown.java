@@ -14,12 +14,8 @@ public class Cooldown {
 	{
 		this.cooldownBase = cooldownBase;
 	}
-	
-	public double getCooldownBase() { return this.cooldownBase; }
-	
-	public double getCooldownBonus(Player player) { return 0.0; }
-	
-	public double getRealCooldown(Player player) { return this.getCooldownBase() - this.getCooldownBonus(player); }
+			
+	public double getRealCooldown(Player player) { return this.cooldownBase;}
 	
 	public double getCurrentCooldown(Player player)
 	{
@@ -34,16 +30,12 @@ public class Cooldown {
 	    
 	    double cooldown = (baseCooldown - System.currentTimeMillis() + ((Long)timer.get(playerName)).longValue()) / 1000L + 1L;
 	
-	    if (cooldown <= 0) { return 0; }
-	    
-	    return cooldown;
+		return Math.max(0, cooldown);
 	}
 	
 	public boolean isUnderCooldown(Player player)
 	{
-		double cooldown = getCurrentCooldown(player);
-		if (cooldown > 0) return true;
-		return false;
+		return getCurrentCooldown(player) > 0;
 	}
 	
 	public void resetCooldown(Player player) {
